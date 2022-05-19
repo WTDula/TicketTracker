@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "d4409d57-7119-4339-bfae-1f3a18bc6341",
-		"name": "DRF_JWT_Backend",
+		"_postman_id": "8976e0cd-86cb-49aa-b50c-e77f5b6f7183",
+		"name": "DRF_JWT_BugTracker",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"dantheman\",\r\n    \"password\": \"password1@\",\r\n    \"email\": \"dan@devcodecamp.com\",\r\n    \"first_name\": \"Daniel\",\r\n    \"last_name\": \"Tulpa\"\r\n}",
+							"raw": "{\r\n    \"username\": \"dantheman\",\r\n    \"password\": \"password1@\",\r\n    \"email\": \"dan@devcodecamp.com\",\r\n    \"first_name\": \"Daniel\",\r\n    \"last_name\": \"Tulpa\",\r\n    \"is_engineer\": false,\r\n    \"is_moderator\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -217,6 +217,180 @@
 								"api",
 								"cars",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tickets",
+			"item": [
+				{
+					"name": "Get_All_Tickets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU3Nzg0LCJpYXQiOjE2NTI5OTM3ODQsImp0aSI6IjRhNjY0NjhlNzY0ZjQ3ZTlhNjBlMGYyOTQ0MjRkOWFhIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIiwiaXNfZW5naW5lZXIiOmZhbHNlLCJpc19tb2RlcmF0b3IiOmZhbHNlfQ.xihYDKe-hGP17rsc13h5gJWH33s5vou6gi24b9-R36w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tickets/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tickets",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Ticket_By_Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU3Nzg0LCJpYXQiOjE2NTI5OTM3ODQsImp0aSI6IjRhNjY0NjhlNzY0ZjQ3ZTlhNjBlMGYyOTQ0MjRkOWFhIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIiwiaXNfZW5naW5lZXIiOmZhbHNlLCJpc19tb2RlcmF0b3IiOmZhbHNlfQ.xihYDKe-hGP17rsc13h5gJWH33s5vou6gi24b9-R36w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tickets/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tickets",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create_Ticket",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU3Nzg0LCJpYXQiOjE2NTI5OTM3ODQsImp0aSI6IjRhNjY0NjhlNzY0ZjQ3ZTlhNjBlMGYyOTQ0MjRkOWFhIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIiwiaXNfZW5naW5lZXIiOmZhbHNlLCJpc19tb2RlcmF0b3IiOmZhbHNlfQ.xihYDKe-hGP17rsc13h5gJWH33s5vou6gi24b9-R36w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Misspelling\",\r\n        \"status\": \"submitted\",\r\n        \"priority\": 3,\r\n        \"is_finished\": false,\r\n        \"description\": \"In the third paragraph, there are multiple misspellings\",\r\n        \"deadline\": \"2022-05-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tickets/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tickets",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_Ticket",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU3Nzg0LCJpYXQiOjE2NTI5OTM3ODQsImp0aSI6IjRhNjY0NjhlNzY0ZjQ3ZTlhNjBlMGYyOTQ0MjRkOWFhIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIiwiaXNfZW5naW5lZXIiOmZhbHNlLCJpc19tb2RlcmF0b3IiOmZhbHNlfQ.xihYDKe-hGP17rsc13h5gJWH33s5vou6gi24b9-R36w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Misspelling\",\r\n    \"status\": \"submitted\",\r\n    \"priority\": 3,\r\n    \"is_finished\": true,\r\n    \"description\": \"In the third paragraph, the word \\\"completely\\\" is spelled as \\\"completly\\\"\",\r\n    \"deadline\": \"2022-05-24\",\r\n    \"posted_by\": {\r\n        \"id\": 2,\r\n        \"password\": \"Customer123\",\r\n        \"last_login\": \"2022-05-19T20:20:08Z\",\r\n        \"is_superuser\": false,\r\n        \"username\": \"Customer1\",\r\n        \"first_name\": \"Kwa\",\r\n        \"last_name\": \"Stomer\",\r\n        \"email\": \"kwastomer1@gmail.com\",\r\n        \"is_staff\": false,\r\n        \"is_active\": true,\r\n        \"date_joined\": \"2022-05-19T20:20:41Z\",\r\n        \"is_engineer\": false,\r\n        \"is_moderator\": false,\r\n        \"groups\": [],\r\n        \"user_permissions\": []\r\n    },\r\n    \"assigned_to\": {\r\n        \"id\": 1,\r\n        \"password\": \"pbkdf2_sha256$320000$Y7Lz2R4GZlgGW5TGcv70ve$QsvYQb9Nnjs+H5j9NPqFR4Biz98GiCHKiVpONj/2POE=\",\r\n        \"last_login\": \"2022-05-19T20:19:50.434999Z\",\r\n        \"is_superuser\": true,\r\n        \"username\": \"admin\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"email\": \"\",\r\n        \"is_staff\": true,\r\n        \"is_active\": true,\r\n        \"date_joined\": \"2022-05-19T15:24:13.367622Z\",\r\n        \"is_engineer\": false,\r\n        \"is_moderator\": false,\r\n        \"groups\": [],\r\n        \"user_permissions\": []\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tickets/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tickets",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_Ticket",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU3Nzg0LCJpYXQiOjE2NTI5OTM3ODQsImp0aSI6IjRhNjY0NjhlNzY0ZjQ3ZTlhNjBlMGYyOTQ0MjRkOWFhIiwidXNlcl9pZCI6NiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIiwiaXNfZW5naW5lZXIiOmZhbHNlLCJpc19tb2RlcmF0b3IiOmZhbHNlfQ.xihYDKe-hGP17rsc13h5gJWH33s5vou6gi24b9-R36w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tickets/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tickets",
+								"5"
 							]
 						}
 					},
