@@ -10,5 +10,5 @@ class Ticket(models.Model):
     is_finished = models.BooleanField(default=False)
     description = models.TextField()
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    assigned_to = models.ForeignKey(User, on_delete=models.CASCADE)
+    assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='assigned')
     deadline = models.DateField()
