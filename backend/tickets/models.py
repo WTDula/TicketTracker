@@ -9,6 +9,6 @@ class Ticket(models.Model):
     priority = models.IntegerField()
     is_finished = models.BooleanField(default=False)
     description = models.TextField()
-    posted_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='assigned')
+    posted_by = models.ForeignKey(User, on_delete=models.CASCADE, default=2)
+    assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='assigned', default=1)
     deadline = models.DateField()
