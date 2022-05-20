@@ -3,36 +3,38 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
+//this will be renamed to CustomerPage but be a basic template for setting up EngineerPage and AdminPage
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
-  //TODO: Add an AddCars Page to add a car for a logged in user's garage
+  
   const [user, token] = useAuth();
-  const [cars, setCars] = useState([]);
+  const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    const fetchCars = async () => {
+    const fetchTickets = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
+        let response = await axios.get("http://127.0.0.1:8000/api/tickets/", {
           headers: {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        console.log(response.data)
+        setTickets(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
     };
-    fetchCars();
+    fetchTickets();
   }, [token]);
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
+      {tickets &&
+        tickets.map((ticket) => (
+          <p key={ticket.id}>
+            Name: {ticket.name} Status: {ticket.status} Description: {ticket.description} Assigned to: {ticket.assigned_to.last_name}, {ticket.assigned_to.first_name} Posted By: {ticket.posted_by.last_name}, {ticket.posted_by.first_name}
           </p>
         ))}
     </div>

@@ -14,6 +14,8 @@ import Footer from "./components/Footer/Footer";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 
+//Do logic to determine if customer, engineer, admin to route to appropriate page here
+
 function App() {
   return (
     <div>
