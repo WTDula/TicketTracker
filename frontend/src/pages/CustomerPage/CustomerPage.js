@@ -3,11 +3,9 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
-import CustomerPage from "../CustomerPage/CustomerPage";
-import EngineerPage from "../EngineerPage/EngineerPage";
-import TicketModeratorPage from "../TicketModeratorPage/TicketModeratorPage";
+//this will be renamed to CustomerPage but be a basic template for setting up EngineerPage and AdminPage
 
-const HomePage = () => {
+const CustomerPage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   
@@ -30,24 +28,17 @@ const HomePage = () => {
     };
     fetchTickets();
   }, [token]);
-
-  const determinePage = () => {
-    if(!user.isEngineer && !user.isModerator){//isEngineer false, isModerator false, user is a customer
-      return <CustomerPage />
-    }
-    else if(user.isEngineer && !user.isModerator){//isEngineer true, isModerator false, user is an engineer
-      return <EngineerPage />
-    }
-    else if(user.isModerator){//isModerator true, user is ticketmoderator
-      return <TicketModeratorPage />
-    }
-  }
-
   return (
     <div className="container">
-      {determinePage()}
+      <h1>Home Page for {user.username}!</h1>
+      {tickets &&
+        tickets.map((ticket) => (
+          <p key={ticket.id}>
+            Name: {ticket.name} Status: {ticket.status} Description: {ticket.description} Assigned to: {ticket.assigned_to.last_name}, {ticket.assigned_to.first_name} Posted By: {ticket.posted_by.last_name}, {ticket.posted_by.first_name}
+          </p>
+        ))}
     </div>
   );
 };
 
-export default HomePage;
+export default CustomerPage;
