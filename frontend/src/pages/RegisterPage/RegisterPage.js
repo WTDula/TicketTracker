@@ -10,8 +10,8 @@ const RegisterPage = () => {
     password: "",
     firstName: "",
     lastName: "",
-    isEngineer: false,
-    isModerator: false
+    is_engineer: false,
+    is_moderator: false
   };
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     defaultValues,
