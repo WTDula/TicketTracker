@@ -1,8 +1,7 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
-
 import axios from "axios";
+
 import CustomerPage from "../CustomerPage/CustomerPage";
 import EngineerPage from "../EngineerPage/EngineerPage";
 import TicketModeratorPage from "../TicketModeratorPage/TicketModeratorPage";
@@ -12,6 +11,7 @@ const HomePage = () => {
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   
   const [user, token] = useAuth();
+  // const TicketContext = createContext();
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,6 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         });
-        console.log(response.data)
         setTickets(response.data);
       } catch (error) {
         console.log(error.response.data);
@@ -32,21 +31,23 @@ const HomePage = () => {
   }, [token]);
 
   const determinePage = () => {
-    if(!user.isEngineer && !user.isModerator){//isEngineer false, isModerator false, user is a customer
-      return <CustomerPage />
+    if(!user.is_engineer && !user.is_moderator){//is_engineer false, is_moderator false, user is a customer
+      return <CustomerPage tickets={tickets} />
     }
-    else if(user.isEngineer && !user.isModerator){//isEngineer true, isModerator false, user is an engineer
-      return <EngineerPage />
+    else if(user.is_engineer && !user.is_moderator){//is_engineer true, is_moderator false, user is an engineer
+      return <EngineerPage tickets={tickets}/>
     }
-    else if(user.isModerator){//isModerator true, user is ticketmoderator
-      return <TicketModeratorPage />
+    else if(user.is_moderator){//is_moderator true, user is ticketmoderator
+      return <TicketModeratorPage tickets={tickets}/>
     }
   }
 
   return (
-    <div className="container">
-      {determinePage()}
-    </div>
+    // <TicketContext.Provider value={tickets}>
+      <div className="container">
+        {determinePage()}
+      </div>
+    // </TicketContext.Provider>
   );
 };
 
