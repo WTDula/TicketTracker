@@ -6,6 +6,7 @@ import CustomerPage from "../CustomerPage/CustomerPage";
 import EngineerPage from "../EngineerPage/EngineerPage";
 import TicketModeratorPage from "../TicketModeratorPage/TicketModeratorPage";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import CreateButton from "../../components/CreateButton/CreateButton";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -27,7 +28,21 @@ const HomePage = () => {
     } catch (error) {
       console.log(error.response.data);
     }
-  };
+  }
+
+  const createTicket = async (newTicket) => {
+    try {
+      let response = await axios.post("http://127.0.0.1:8000/api/tickets/", newTicket, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+      console.log(response.data)
+      fetchTickets()
+    } catch (error) {
+      console.log(error.response.data)
+    }
+  }
 
   useEffect(() => {
     fetchTickets();
@@ -49,6 +64,7 @@ const HomePage = () => {
     // <TicketContext.Provider value={tickets}>
       <div className="container">
         <SearchBar tickets={tickets} setTickets={setTickets} fetchTickets={fetchTickets}/>
+        <CreateButton createTicket={createTicket} />
         {determinePage()}
       </div>
     // </TicketContext.Provider>
