@@ -36,7 +36,6 @@ const CreateButton = (props) => {
             <button onClick={handleShow}>Create New Ticket</button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Body>
-                    {console.log(user.id)}
                     <h2>Create New Ticket</h2>
                     <form onSubmit={handleSubmit}>
                         <label>Name</label>

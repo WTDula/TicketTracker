@@ -37,7 +37,6 @@ const HomePage = () => {
           Authorization: "Bearer " + token,
         },
       })
-      console.log(response.data)
       fetchTickets()
     } catch (error) {
       console.log(error.response.data)
