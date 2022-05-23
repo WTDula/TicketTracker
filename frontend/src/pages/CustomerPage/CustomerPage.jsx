@@ -1,4 +1,5 @@
 import React from "react";
+import TicketTable from "../../components/TicketTable/TicketTable";
 // import { useEffect, useState, useContext } from "react";
 import useAuth from "../../hooks/useAuth";
 
@@ -15,12 +16,7 @@ const CustomerPage = ({tickets}) => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      {tickets &&
-        tickets.map((ticket) => (
-          <p key={ticket.id}>
-            Name: {ticket.name} Status: {ticket.status} Description: {ticket.description} Assigned to: {ticket.assigned_to.last_name}, {ticket.assigned_to.first_name} Posted By: {ticket.posted_by.last_name}, {ticket.posted_by.first_name}
-          </p>
-        ))}
+      {tickets && <TicketTable tickets={tickets}/>}
     </div>
   );
 };

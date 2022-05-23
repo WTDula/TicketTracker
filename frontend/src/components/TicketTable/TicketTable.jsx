@@ -1,6 +1,24 @@
 import React from "react";
+import useAuth from "../../hooks/useAuth";
+import DeleteButton from "../DeleteButton/DeleteButton";
+import EditButton from "../EditButton/EditButton";
 
 const TicketTable = ({tickets}) => {
+
+    const [user, token] = useAuth()
+
+    const checkEngineer = () => {
+        if(user.is_engineer || user.is_moderator){
+            return <EditButton />
+        }
+    }
+
+    const checkModerator = () => {
+        if(user.is_moderator){
+            return <DeleteButton />
+        }
+    }
+
     return ( 
         <table>
             <thead>
@@ -21,10 +39,12 @@ const TicketTable = ({tickets}) => {
                             <td>{ticket.name}</td>
                             <td>{ticket.status}</td>
                             <td>{ticket.description}</td>
-                            <td>{ticket.assigned_to.last_name}, {ticket.assign_to.first_name}</td>
+                            <td>{ticket.assigned_to.last_name}, {ticket.assigned_to.first_name}</td>
                             <td>{ticket.posted_by.last_name}, {ticket.posted_by.first_name}</td>
                             <td>{ticket.deadline}</td>
                             <td>{ticket.isCompleted}</td>
+                            {checkEngineer()}
+                            {checkModerator()}
                         </tr>
                     )
                 })}
