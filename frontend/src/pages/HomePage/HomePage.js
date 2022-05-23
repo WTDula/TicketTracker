@@ -14,19 +14,20 @@ const HomePage = () => {
   // const TicketContext = createContext();
   const [tickets, setTickets] = useState([]);
 
+  const fetchTickets = async () => {
+    try {
+      let response = await axios.get("http://127.0.0.1:8000/api/tickets/", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setTickets(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
   useEffect(() => {
-    const fetchTickets = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/tickets/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setTickets(response.data);
-      } catch (error) {
-        console.log(error.response.data);
-      }
-    };
     fetchTickets();
   }, [token]);
 
