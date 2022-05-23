@@ -1,4 +1,5 @@
 import React from "react";
+import CustomerFilter from "../../components/CustomerFilter/CustomerFilter";
 import TicketTable from "../../components/TicketTable/TicketTable";
 // import { useEffect, useState, useContext } from "react";
 import useAuth from "../../hooks/useAuth";
@@ -16,6 +17,7 @@ const CustomerPage = ({tickets}) => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
+      <CustomerFilter tickets={tickets} />
       {tickets && <TicketTable tickets={tickets}/>}
     </div>
   );

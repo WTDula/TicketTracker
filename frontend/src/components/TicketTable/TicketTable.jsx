@@ -42,7 +42,7 @@ const TicketTable = ({tickets}) => {
                             <td>{ticket.assigned_to.last_name}, {ticket.assigned_to.first_name}</td>
                             <td>{ticket.posted_by.last_name}, {ticket.posted_by.first_name}</td>
                             <td>{ticket.deadline}</td>
-                            <td>{ticket.isCompleted}</td>
+                            <td>{ticket.is_finished ? "Yes" : "No"}</td>
                             {checkEngineer()}
                             {checkModerator()}
                         </tr>
