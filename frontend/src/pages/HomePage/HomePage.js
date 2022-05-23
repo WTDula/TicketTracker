@@ -5,12 +5,14 @@ import axios from "axios";
 import CustomerPage from "../CustomerPage/CustomerPage";
 import EngineerPage from "../EngineerPage/EngineerPage";
 import TicketModeratorPage from "../TicketModeratorPage/TicketModeratorPage";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   
   const [user, token] = useAuth();
+  // const [search, setSearch] = useState([]);
   // const TicketContext = createContext();
   const [tickets, setTickets] = useState([]);
 
@@ -46,6 +48,7 @@ const HomePage = () => {
   return (
     // <TicketContext.Provider value={tickets}>
       <div className="container">
+        <SearchBar tickets={tickets} setTickets={setTickets} fetchTickets={fetchTickets}/>
         {determinePage()}
       </div>
     // </TicketContext.Provider>
