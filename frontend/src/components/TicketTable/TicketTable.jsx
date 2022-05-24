@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useAuth from "../../hooks/useAuth";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditButton from "../EditButton/EditButton";
@@ -6,18 +6,6 @@ import EditButton from "../EditButton/EditButton";
 const TicketTable = ({tickets}) => {
 
     const [user, token] = useAuth()
-
-    const checkEngineer = () => {
-        if(user.is_engineer || user.is_moderator){
-            return <EditButton />
-        }
-    }
-
-    const checkModerator = () => {
-        if(user.is_moderator){
-            return <DeleteButton />
-        }
-    }
 
     return (
         <table>
@@ -43,8 +31,8 @@ const TicketTable = ({tickets}) => {
                             <td>{ticket.posted_by.last_name}, {ticket.posted_by.first_name}</td>
                             <td>{ticket.deadline}</td>
                             <td>{ticket.is_finished ? "Yes" : "No"}</td>
-                            {checkEngineer()}
-                            {checkModerator()}
+                            {user.is_engineer || user.is_moderator ? <EditButton ticket={ticket}/> : <></>}
+                            {user.is_moderator ? <DeleteButton ticket={ticket}/> : <></>}
                         </tr>
                     )
                 })}
