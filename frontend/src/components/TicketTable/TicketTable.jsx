@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditButton from "../EditButton/EditButton";
@@ -19,7 +19,9 @@ const TicketTable = ({tickets}) => {
         }
     }
 
-    return ( 
+
+    return (
+
         <table>
             {console.log('tickets within tickettable', tickets)}
             <thead>
@@ -50,7 +52,8 @@ const TicketTable = ({tickets}) => {
                     )
                 })}
             </tbody>
-        </table>
+        </table>  
+
      );
 }
  

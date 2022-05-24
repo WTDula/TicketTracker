@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 const CustomerPage = (props) => {
 
   const [ticketFilter, setTicketFilter] = useState("All")
-  const [tickets, setTickets] = useState(props.tickets)
+  const [tickets, setTickets] = useState([])
 
   
 
@@ -17,7 +17,8 @@ const CustomerPage = (props) => {
     const showFinishedList = (ticketFilter) => {
       let ticketList
       if(ticketFilter === "All"){
-        setTickets(props.tickets)
+        ticketList = props.tickets
+        console.log('all tickets', props.tickets)
       }
       else if(ticketFilter === "Completed"){
         ticketList = tickets.filter(t => t.is_finished === true)
@@ -29,6 +30,10 @@ const CustomerPage = (props) => {
     }
     showFinishedList(ticketFilter)
   }, [ticketFilter])
+
+  useEffect(() =>{
+    setTickets(props.tickets)
+  }, [props.tickets])
   
   const [user, token] = useAuth();
   //const tickets = useContext(TicketContext)
