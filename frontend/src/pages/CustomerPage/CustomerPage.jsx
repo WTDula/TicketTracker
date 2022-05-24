@@ -18,7 +18,6 @@ const CustomerPage = (props) => {
       let ticketList
       if(ticketFilter === "All"){
         ticketList = props.tickets
-        console.log('all tickets', props.tickets)
       }
       else if(ticketFilter === "Completed"){
         ticketList = tickets.filter(t => t.is_finished === true)

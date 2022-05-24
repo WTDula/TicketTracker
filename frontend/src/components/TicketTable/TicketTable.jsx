@@ -19,11 +19,8 @@ const TicketTable = ({tickets}) => {
         }
     }
 
-
     return (
-
         <table>
-            {console.log('tickets within tickettable', tickets)}
             <thead>
                 <tr>
                     <th>Name</th>
@@ -53,7 +50,6 @@ const TicketTable = ({tickets}) => {
                 })}
             </tbody>
         </table>  
-
      );
 }
  

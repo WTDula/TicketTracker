@@ -35,9 +35,7 @@ const HomePage = () => {
             Authorization: "Bearer " + token,
           },
         })
-        console.log(response.data)
         setTickets(response.data)
-        console.log(tickets)
       }
       catch (error) {
         console.log(error.message)
@@ -61,7 +59,6 @@ const HomePage = () => {
   return (
     // <TicketContext.Provider value={tickets}>
       <div className="container">
-        {console.log('Tickets: ', tickets)}
         <SearchBar tickets={tickets} setTickets={setTickets} />
         <CreateButton createTicket={createTicket} />
         {determinePage()}
