@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Filter from "../../components/Filter/Filter";
 import TicketTable from "../../components/TicketTable/TicketTable";
-// import { useEffect, useState, useContext } from "react";
 import useAuth from "../../hooks/useAuth";
 
 // import axios from "axios";
@@ -12,20 +11,24 @@ const CustomerPage = (props) => {
   const [ticketFilter, setTicketFilter] = useState("All")
   const [tickets, setTickets] = useState(props.tickets)
 
-  const showFinishedList = (ticketFilter) => {
-    let ticketList
-    if(ticketFilter === "All"){
-      setTickets(props.tickets)
+  
+
+  useEffect(() => {
+    const showFinishedList = (ticketFilter) => {
+      let ticketList
+      if(ticketFilter === "All"){
+        setTickets(props.tickets)
+      }
+      else if(ticketFilter === "Completed"){
+        ticketList = tickets.filter(t => t.is_finished === true)
+      }
+      else(
+        ticketList = tickets.filter(t => t.is_finished === false)
+      )
+      setTickets(ticketList)
     }
-    else if(ticketFilter === "Completed"){
-      ticketList = tickets.filter(t => t.is_finished === true)
-    }
-    else(
-      ticketList = tickets.filter(t => t.is_finished === false)
-    )
-    console.log(ticketList)
-    setTickets(ticketList)
-}
+    showFinishedList(ticketFilter)
+  }, [ticketFilter])
   
   const [user, token] = useAuth();
   //const tickets = useContext(TicketContext)
@@ -38,7 +41,6 @@ const CustomerPage = (props) => {
         <Filter name={"Active"} setTicketFilter={setTicketFilter}/>
         <Filter name={"Completed"} setTicketFilter={setTicketFilter}/>
       </div>
-      {showFinishedList(ticketFilter)}
       {tickets && <TicketTable tickets={tickets}/>}
     </div>
   );

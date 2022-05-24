@@ -9,26 +9,11 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import CreateButton from "../../components/CreateButton/CreateButton";
 
 const HomePage = () => {
-  // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
-  // The "token" value is the JWT token that you will send in the header of any request requiring authentication
-  
+
   const [user, token] = useAuth();
   // const [search, setSearch] = useState([]);
   // const TicketContext = createContext();
   const [tickets, setTickets] = useState([]);
-
-  const fetchTickets = async () => {
-    try {
-      let response = await axios.get("http://127.0.0.1:8000/api/tickets/", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
-      setTickets(response.data);
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  }
 
   const createTicket = async (newTicket) => {
     try {
@@ -37,13 +22,27 @@ const HomePage = () => {
           Authorization: "Bearer " + token,
         },
       })
-      fetchTickets()
     } catch (error) {
       console.log(error.response.data)
     }
   }
 
   useEffect(() => {
+    const fetchTickets = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/tickets/", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        })
+        console.log(response.data)
+        setTickets(response.data)
+        console.log(tickets)
+      }
+      catch (error) {
+        console.log(error.message)
+      }
+    }
     fetchTickets();
   }, [token]);
 
@@ -62,7 +61,8 @@ const HomePage = () => {
   return (
     // <TicketContext.Provider value={tickets}>
       <div className="container">
-        <SearchBar tickets={tickets} setTickets={setTickets} fetchTickets={fetchTickets}/>
+        {console.log('Tickets: ', tickets)}
+        <SearchBar tickets={tickets} setTickets={setTickets} />
         <CreateButton createTicket={createTicket} />
         {determinePage()}
       </div>
