@@ -17,7 +17,10 @@ const EngineerPage = (props) => {
             ticketList = props.tickets
           }
           else if(ticketFilter === "My Tickets"){
+              console.log('tickets inside engineerpage useffect', tickets)
             ticketList = tickets.filter(t => t.assigned_to === user.id)
+            console.log(user.id)
+            console.log(ticketList)
           }
           else(
             ticketList = tickets.filter(t => t.is_finished === false)
