@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import useAuth from "../../hooks/useAuth";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditButton from "../EditButton/EditButton";
 
-const TicketTable = ({tickets}) => {
+const TicketTable = (props) => {
 
     const [user, token] = useAuth()
+    const [tickets, setTickets] = useState([])
+
+    useEffect(() => {
+        setTickets(props.tickets)
+    }, [props.tickets])
 
     return (
         <table>

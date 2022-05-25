@@ -6,44 +6,42 @@ import Filter from '../../components/Filter/Filter';
 
 const EngineerPage = (props) => {
 
-    const [user, token] = useAuth()
-    const [ticketFilter, setTicketFilter] = useState("All")
-    const [tickets, setTickets] = useState([])
+  const [user, token] = useAuth()
+  const [ticketFilter, setTicketFilter] = useState("All")
+  const [tickets, setTickets] = useState([])
 
-    useEffect(() => {
-        const showFinishedList = (ticketFilter) => {
-          let ticketList
-          if(ticketFilter === "All"){
-            ticketList = props.tickets
-          }
-          else if(ticketFilter === "My Tickets"){
-              console.log('tickets inside engineerpage useffect', tickets)
-            ticketList = tickets.filter(t => t.assigned_to === user.id)
-            console.log(user.id)
-            console.log(ticketList)
-          }
-          else(
-            ticketList = tickets.filter(t => t.is_finished === false)
-          )
-          setTickets(ticketList)
-        }
-        showFinishedList(ticketFilter)
-      }, [ticketFilter])
-    
-      useEffect(() =>{
-        setTickets(props.tickets)
-      }, [props.tickets])
+  useEffect(() => {
+    const showFinishedList = (ticketFilter) => {
+      let ticketList
+      if(ticketFilter === "All"){
+        ticketList = props.tickets
+      }
+      else if(ticketFilter === "My Tickets"){
+        ticketList = tickets.filter(t => t.assigned_to.id === user.id)
+      }
+      else{
+        ticketList = tickets.sort((t1, t2) => (t1.priority < t2.priority) ? 1 : -1)
+        console.log("ticketList in order by priority ", ticketList)
+      }
+      setTickets(ticketList)
+    }
+    showFinishedList(ticketFilter)
+  }, [ticketFilter])
 
-    return ( 
-        <div>
-            <h1>Home Page for Engineer {user.username}!</h1>
-                <Filter name={"All"} setTicketFilter={setTicketFilter}/>
-                <Filter name={"My Tickets"} setTicketFilter={setTicketFilter}/>
-                <Filter name={"Tickets by Priority"} setTicketFilter={setTicketFilter}/>
+    useEffect(() =>{
+      setTickets(props.tickets)
+    }, [props.tickets])
 
-            {tickets && <TicketTable tickets={tickets}/>}
-        </div>
-     );
+  return ( 
+      <div>
+          <h1>Home Page for Engineer {user.username}!</h1>
+              <Filter name={"All"} setTicketFilter={setTicketFilter}/>
+              <Filter name={"My Tickets"} setTicketFilter={setTicketFilter}/>
+              <Filter name={"Tickets by Priority"} setTicketFilter={setTicketFilter}/>
+
+          {tickets && <TicketTable tickets={tickets}/>}
+      </div>
+    );
 }
  
 export default EngineerPage;

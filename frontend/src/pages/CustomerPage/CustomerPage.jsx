@@ -22,9 +22,9 @@ const CustomerPage = (props) => {
       else if(ticketFilter === "Completed"){
         ticketList = tickets.filter(t => t.is_finished === true)
       }
-      else(
+      else{
         ticketList = tickets.filter(t => t.is_finished === false)
-      )
+      }
       setTickets(ticketList)
     }
     showFinishedList(ticketFilter)
