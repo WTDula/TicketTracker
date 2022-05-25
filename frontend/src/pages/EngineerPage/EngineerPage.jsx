@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TicketTable from '../../components/TicketTable/TicketTable';
 import useAuth from '../../hooks/useAuth';
 import Filter from '../../components/Filter/Filter';
+import Statistics from '../../components/Statistics/Statistics';
 
 
 const EngineerPage = (props) => {
@@ -40,6 +41,7 @@ const EngineerPage = (props) => {
               <Filter name={"Tickets by Priority"} setTicketFilter={setTicketFilter}/>
 
           {tickets && <TicketTable tickets={tickets}/>}
+          <Statistics tickets={props.tickets} />
       </div>
     );
 }
