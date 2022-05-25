@@ -21,7 +21,8 @@ const EngineerPage = (props) => {
         ticketList = tickets.filter(t => t.assigned_to.id === user.id)
       }
       else{
-        ticketList = tickets.sort((t1, t2) => (t1.priority < t2.priority) ? 1 : -1)
+        const ticketsAssignedToMe = tickets.filter(t => t.assigned_to.id === user.id)
+        ticketList = ticketsAssignedToMe.sort((t1, t2) => (t1.priority < t2.priority) ? 1 : -1)
         console.log("ticketList in order by priority ", ticketList)
       }
       setTickets(ticketList)
@@ -38,7 +39,7 @@ const EngineerPage = (props) => {
           <h1>Home Page for Engineer {user.username}!</h1>
               <Filter name={"All"} setTicketFilter={setTicketFilter}/>
               <Filter name={"My Tickets"} setTicketFilter={setTicketFilter}/>
-              <Filter name={"Tickets by Priority"} setTicketFilter={setTicketFilter}/>
+              <Filter name={"My Tickets by Priority"} setTicketFilter={setTicketFilter}/>
 
           {tickets && <TicketTable tickets={tickets}/>}
           <Statistics tickets={props.tickets} />
