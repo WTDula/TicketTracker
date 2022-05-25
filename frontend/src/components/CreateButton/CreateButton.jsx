@@ -8,7 +8,7 @@ const CreateButton = (props) => {
     const [show, setShow] = useState(false)
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
-    const [priority, setPriority] = useState(0)
+    const [priority, setPriority] = useState(1)
     const [user, token] = useAuth()
     const [timeStamp, setTimeStamp] = useState(Date())
 
@@ -41,7 +41,7 @@ const CreateButton = (props) => {
                         <label>Name</label>
                         <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
                         <label>Description</label>
-                        <input type="textarea" value={description} onChange={(event) => setDescription(event.target.value)}/>
+                        <textarea value={description} onChange={(event) => setDescription(event.target.value)}/>
                         <label>Priority</label>
                         <span> 1 (least urgent)</span>
                         <input type="range" min={1} max={3} value={priority} onChange={(event) => setPriority(event.target.value)}/>
