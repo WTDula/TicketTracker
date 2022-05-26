@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import TicketTable from '../../components/TicketTable/TicketTable';
 import AdminTable from '../../components/AdminTable/AdminTable';
+import Filter from '../../components/Filter/Filter';
+import Statistics from '../../components/Statistics/Statistics';
 
 
 const TicketModeratorPage = (props) => {

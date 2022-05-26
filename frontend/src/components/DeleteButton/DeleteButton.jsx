@@ -7,17 +7,20 @@ const DeleteButton = (props) => {
 
     const [user, token] = useAuth()
 
-    const handleDelete = async () => {
-        let request = await axios.delete(`http://127.0.0.1:8000/api/tickets/${props.ticket.id}`, {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-        })
+    async function handleDelete() {
+        let confirmation = window.confirm(`Are you sure you want to delete:\n id: ${props.ticket.id}\nname: ${props.ticket.name}\ndescription: ${props.ticket.description}`)
+        if(confirmation){
+            let request = await axios.delete(`http://127.0.0.1:8000/api/tickets/${props.ticket.id}/`, {
+                headers: {
+                  Authorization: "Bearer " + token,
+                },
+            })
+        }
     }
 
     return ( 
         <div>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleDelete}>Delete Ticket {props.ticket.id}</button>
         </div>
      );
 }
