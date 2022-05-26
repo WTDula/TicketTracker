@@ -22,7 +22,7 @@ def ticket_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(["GET", "PUT", "DELETE"])
+@api_view(["GET", "PUT", "DELETE", "PATCH"])
 @permission_classes([IsAuthenticated])
 def ticket_details(request, pk):
     ticket = get_object_or_404(Ticket, id = pk)
@@ -39,3 +39,8 @@ def ticket_details(request, pk):
         serializer = TicketSerializer(ticket_return)
         ticket.delete()
         return Response(serializer.data, status = status.HTTP_204_NO_CONTENT)
+    elif request.method == "PATCH":
+        serializer = TicketSerializer(ticket, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
