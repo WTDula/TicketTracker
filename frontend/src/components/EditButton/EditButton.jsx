@@ -56,18 +56,17 @@ const EditButton = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder='Ticket Title' onChange={event => setName(event.target.value)} />
+                        <input type="text" placeholder={props.ticket.name} onChange={event => setName(event.target.value)} />
                         <div>
                             <p>Priority</p>
                             <span> 1 (least urgent)</span>
                             <input type="range" min={1} max={3} onChange={event => setPriority(event.target.value)}/>
                             <span> 3 (most urgent)</span>
                         </div>
-                        <textarea placeholder='Description' onChange={event => setDescription(event.target.value)}/>
+                        <textarea placeholder='Update Explanation' onChange={event => setDescription(event.target.value)}/>
                         <label>Status</label>
                         <select onChange={event => setStatus(event.target.value)}>
                             <option value="submitted">Submitted</option>
-                            <option value="under review">Under Review</option>
                             <option value="in progress">In Progress</option>
                             <option value="finished">Finished</option>
                         </select>
