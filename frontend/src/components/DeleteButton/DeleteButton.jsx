@@ -16,6 +16,7 @@ const DeleteButton = (props) => {
                 },
             })
         }
+        props.fetchTickets()
     }
 
     return ( 

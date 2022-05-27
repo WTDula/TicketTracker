@@ -45,7 +45,7 @@ const CustomerPage = (props) => {
         <Filter name={"Active"} setTicketFilter={setTicketFilter}/>
         <Filter name={"Completed"} setTicketFilter={setTicketFilter}/>
       </div>
-      {tickets && <TicketTable tickets={tickets}/>}
+      {tickets && <TicketTable tickets={tickets} fetchTickets={props.fetchTickets}/>}
     </div>
   );
 };

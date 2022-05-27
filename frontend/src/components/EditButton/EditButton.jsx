@@ -36,6 +36,7 @@ const EditButton = (props) => {
               Authorization: "Bearer " + token,
             },
         })
+        props.fetchTickets()
     }
     useEffect(() => {
         setName(props.ticket.name)

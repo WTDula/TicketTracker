@@ -11,7 +11,7 @@ import CreateButton from "../../components/CreateButton/CreateButton";
 const HomePage = () => {
 
   const [user, token] = useAuth();
-  // const [search, setSearch] = useState([]);
+  const [update, setUpdate] = useState(1.4);
   // const TicketContext = createContext();
   const [tickets, setTickets] = useState([]);
 
@@ -25,34 +25,37 @@ const HomePage = () => {
     } catch (error) {
       console.log(error.response.data)
     }
+    fetchTickets()
+  }
+
+  const fetchTickets = async () => {
+    try {
+      let response = await axios.get("http://127.0.0.1:8000/api/tickets/", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+      setTickets(response.data)
+    }
+    catch (error) {
+      console.log(error.message)
+    }
   }
 
   useEffect(() => {
-    const fetchTickets = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/tickets/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        })
-        setTickets(response.data)
-      }
-      catch (error) {
-        console.log(error.message)
-      }
-    }
+
     fetchTickets();
   }, [token]);
 
   const determinePage = () => {
     if(!user.is_engineer && !user.is_moderator){//is_engineer false, is_moderator false, user is a customer
-      return <CustomerPage tickets={tickets} />
+      return <CustomerPage tickets={tickets} fetchTickets={fetchTickets}/>
     }
     else if(user.is_engineer && !user.is_moderator){//is_engineer true, is_moderator false, user is an engineer
-      return <EngineerPage tickets={tickets}/>
+      return <EngineerPage tickets={tickets} fetchTickets={fetchTickets}/>
     }
     else if(user.is_moderator){//is_moderator true, user is ticketmoderator
-      return <TicketModeratorPage tickets={tickets}/>
+      return <TicketModeratorPage tickets={tickets} fetchTickets={fetchTickets}/>
     }
   }
 
@@ -60,7 +63,7 @@ const HomePage = () => {
     // <TicketContext.Provider value={tickets}>
       <div className="container">
         <SearchBar tickets={tickets} setTickets={setTickets} />
-        <CreateButton createTicket={createTicket} />
+        <CreateButton createTicket={createTicket} tickets={tickets} fetchTickets={fetchTickets}/>
         {determinePage()}
       </div>
     // </TicketContext.Provider>

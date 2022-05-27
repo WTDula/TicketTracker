@@ -6,7 +6,13 @@ import EditButton from "../EditButton/EditButton";
 const TicketTable = (props) => {
 
     const [user, token] = useAuth()
+    const [update, setUpdate] = useState(1)
     const [tickets, setTickets] = useState([])
+
+    const reloadPage = () => {
+        setUpdate(Math.random * 10)
+    }
+    
 
     useEffect(() => {
         setTickets(props.tickets)
@@ -36,8 +42,8 @@ const TicketTable = (props) => {
                             <td>{ticket.posted_by.last_name}, {ticket.posted_by.first_name}</td>
                             <td>{ticket.deadline}</td>
                             <td>{ticket.is_finished ? "Yes" : "No"}</td>
-                            {user.is_engineer || user.is_moderator ? <EditButton ticket={ticket}/> : <></>}
-                            {user.is_moderator ? <DeleteButton ticket={ticket}/> : <></>}
+                            {user.is_engineer || user.is_moderator ? <EditButton ticket={ticket} fetchTickets={props.fetchTickets}/> : <></>}
+                            {user.is_moderator ? <DeleteButton ticket={ticket} fetchTickets={props.fetchTickets}/> : <></>}
                         </tr>
                     )
                 })}

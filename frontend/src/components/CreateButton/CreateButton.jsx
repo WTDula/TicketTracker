@@ -48,7 +48,7 @@ const CreateButton = (props) => {
                         <span> 3 (most urgent)</span>
                         <label>Date</label>
                         <input type="date" value={timeStamp} onChange={(event) => setTimeStamp(event.target.value)} />
-                        <button type='submit'>Create</button>
+                        <button type='submit' onClick={handleClose}>Create</button>
                         <button  onClick={handleClose}>Close</button>
                     </form>
                 </Modal.Body>
