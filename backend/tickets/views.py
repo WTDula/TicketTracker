@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404
 from .models import Ticket
 from .serializers import TicketSerializer
+from authentication.models import User
 # Create your views here.
 
 
@@ -40,6 +41,8 @@ def ticket_details(request, pk):
         ticket.delete()
         return Response(serializer.data, status = status.HTTP_204_NO_CONTENT)
     elif request.method == "PATCH":
+        new_engineer = User.objects.get(pk = request.data['assigned_to'])
+        ticket.assigned_to = new_engineer
         serializer = TicketSerializer(ticket, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
