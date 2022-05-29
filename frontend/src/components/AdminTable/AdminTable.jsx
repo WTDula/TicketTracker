@@ -76,7 +76,7 @@ const AdminTable = (props) => {
                                 <td>{ticket.name}</td>
                                 <td>{ticket.status}</td>
                                 <td>{ticket.description}</td>
-                                <td><AssignButton ticket={ticket} engineers={distinctEngineers}/></td>
+                                <td><AssignButton ticket={ticket} engineers={distinctEngineers} fetchTickets={props.fetchTickets}/></td>
                                 <td>{ticket.posted_by.last_name}, {ticket.posted_by.first_name}</td>
                                 <td>{ticket.deadline}</td>
                                 <td>{ticket.is_finished ? "Yes" : "No"}</td>

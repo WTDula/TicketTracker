@@ -45,7 +45,7 @@ const TicketModeratorPage = (props) => {
               <Filter name={"My Tickets by Priority"} setTicketFilter={setTicketFilter}/>
             {tickets && <TicketTable tickets={tickets} fetchTickets={props.fetchTickets}/>}
             <Statistics tickets={props.tickets} />
-            <AdminTable tickets={tickets}/>
+            <AdminTable tickets={tickets} fetchTickets={props.fetchTickets}/>
         </div>
      );
 }

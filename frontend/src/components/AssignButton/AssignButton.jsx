@@ -22,6 +22,7 @@ const AssignButton = (props) => {
         } catch (error) {
             console.log(error.message)
         }
+        props.fetchTickets()
     }
 
     return (
