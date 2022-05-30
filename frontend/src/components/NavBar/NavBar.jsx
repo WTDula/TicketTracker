@@ -49,17 +49,6 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
     </Box>
-    // <div className="navBar">
-    //   <ul>
-    //     <li>
-    //       {user ? (
-    //         <button onClick={logoutUser}>Logout</button>
-    //       ) : (
-    //         <button onClick={() => navigate("/login")}>Login</button>
-    //       )}
-    //     </li>
-    //   </ul>
-    // </div>
   );
 };
 

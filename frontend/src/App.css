@@ -22,7 +22,7 @@ p {
 button {
   background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
   border: 0;
-  border-radius: 3;
+  border-radius: 3px;
   color: white;
   height: 48;
   padding: 0 30px;
@@ -30,8 +30,8 @@ button {
 
 button:hover {
   cursor: pointer;
-  color: white;
-  background-color: steelblue;
+  color: steelblue;
+  border: 1px solid white;
 }
 
 .container {
