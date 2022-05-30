@@ -62,9 +62,9 @@ const HomePage = () => {
   return (
     // <TicketContext.Provider value={tickets}>
       <div className="container">
+        {determinePage()}
         <SearchBar tickets={tickets} setTickets={setTickets} />
         <CreateButton createTicket={createTicket} tickets={tickets} fetchTickets={fetchTickets}/>
-        {determinePage()}
       </div>
     // </TicketContext.Provider>
   );

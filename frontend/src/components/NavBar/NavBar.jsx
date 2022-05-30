@@ -19,7 +19,7 @@ const Navbar = () => {
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-              <b>TicketTracker</b>
+              <b>Ticket Tracker</b>
             </Link>
           </Typography>
           {user ? (
