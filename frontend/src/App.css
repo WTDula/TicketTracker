@@ -10,7 +10,9 @@
 
 html {
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
+  background-color: #303030;
+  color: #e6e1e1;
 }
 
 p {
@@ -18,13 +20,12 @@ p {
 }
 
 button {
-  background-color: transparent;
-  border: 2px solid steelblue;
-  color: steelblue;
-  font-size: 1rem;
-  font-family: inherit;
-  max-width: 100px;
-  padding: 0.5rem 0.5rem;
+  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+  border: 0;
+  border-radius: 3;
+  color: white;
+  height: 48;
+  padding: 0 30px;
 }
 
 button:hover {
@@ -34,7 +35,8 @@ button:hover {
 }
 
 .container {
-  margin: 0 auto;
+  margin: 10px auto;
+  padding: 10px auto;
   max-width: 80%;
   overflow: auto;
   text-align: center;
