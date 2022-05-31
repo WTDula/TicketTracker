@@ -37,16 +37,18 @@ const CreateButton = (props) => {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Body>
                     <h2>Create New Ticket</h2>
-                    <form onSubmit={handleSubmit}>
-                        <label>Name</label>
+                    <form onSubmit={handleSubmit} className='ml-2'>
+                        <label>Name: </label>
                         <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
-                        <label>Description</label>
+                        <label>Description: </label>
                         <textarea value={description} onChange={(event) => setDescription(event.target.value)}/>
-                        <label>Priority</label>
-                        <span> 1 (least urgent)</span>
-                        <input type="range" min={1} max={3} value={priority} onChange={(event) => setPriority(event.target.value)}/>
-                        <span> 3 (most urgent)</span>
-                        <label>Date</label>
+                        <div>
+                            <label>Priority: </label>
+                            <span> 1 (least urgent)</span>
+                            <input type="range" min={1} max={3} value={priority} onChange={(event) => setPriority(event.target.value)}/>
+                            <span> 3 (most urgent)</span>
+                        </div>
+                        <label>Due Date: </label>
                         <input type="date" value={timeStamp} onChange={(event) => setTimeStamp(event.target.value)} />
                         <button type='submit' onClick={handleClose}>Create</button>
                         <button  onClick={handleClose}>Close</button>

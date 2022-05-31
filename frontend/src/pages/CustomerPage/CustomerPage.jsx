@@ -39,7 +39,7 @@ const CustomerPage = (props) => {
 
   return (
     <div className="container">
-      <h1>Home Page for {user.username}!</h1>
+      <h1>Welcome to Ticket Tracker, {user.username}!</h1>
       <div className="filter-div">
         <Filter name={"All"} setTicketFilter={setTicketFilter}/>
         <Filter name={"Active"} setTicketFilter={setTicketFilter}/>
