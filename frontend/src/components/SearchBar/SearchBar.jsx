@@ -9,7 +9,7 @@ const SearchBar = (props) => {
         event.preventDefault()
         let filteredTickets = props.tickets.filter((ticket) => {
             if(searchField === ""){
-                props.setTickets(props.tickets)
+                props.fetchTickets()
             }
             else if(
                 ticket.name.toLowerCase().includes(searchField.toLowerCase())  ||

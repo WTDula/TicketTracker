@@ -38,7 +38,7 @@ const TicketTable = (props) => {
                         <tr key={index}>
                             <td>{ticket.name}</td>
                             <td>{ticket.status}</td>
-                            <td>{ticket.description}</td>
+                            <td className="desc">{ticket.description}</td>
                             <td>{ticket.assigned_to.last_name}, {ticket.assigned_to.first_name}</td>
                             <td>{ticket.posted_by.last_name}, {ticket.posted_by.first_name}</td>
                             <td>{ticket.deadline}</td>

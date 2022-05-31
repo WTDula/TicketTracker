@@ -2,10 +2,15 @@ table{
     width: 100%;
     border-collapse: collapse;
     margin-top: 2px;
+    
 }
 
 table thead{
     background-color: steelblue;
+}
+
+table tbody tr{
+    height: 10vh;
 }
 
 table thead tr th{
@@ -20,3 +25,7 @@ table tbody tr td{
     background-color: #515151;
 }
 
+.desc{
+    width: 100rem;
+    overflow: scroll;
+}
