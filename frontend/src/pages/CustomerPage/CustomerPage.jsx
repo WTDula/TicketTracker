@@ -3,15 +3,10 @@ import Filter from "../../components/Filter/Filter";
 import TicketTable from "../../components/TicketTable/TicketTable";
 import useAuth from "../../hooks/useAuth";
 
-// import axios from "axios";
-// basic template for setting up EngineerPage and AdminPage
-
 const CustomerPage = (props) => {
 
   const [ticketFilter, setTicketFilter] = useState("All")
   const [tickets, setTickets] = useState([])
-
-  
 
   useEffect(() => {
     const showFinishedList = (ticketFilter) => {
@@ -35,11 +30,10 @@ const CustomerPage = (props) => {
   }, [props.tickets])
   
   const [user, token] = useAuth();
-  //const tickets = useContext(TicketContext)
 
   return (
     <div className="container">
-      <h1>Welcome to Ticket Tracker, {user.username}!</h1>
+      <h1>Welcome to Ticket Tracker, {user.first_name}!</h1>
       <div className="filter-div">
         <Filter name={"All"} setTicketFilter={setTicketFilter}/>
         <Filter name={"Active"} setTicketFilter={setTicketFilter}/>
