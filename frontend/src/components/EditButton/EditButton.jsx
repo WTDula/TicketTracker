@@ -31,13 +31,19 @@ const EditButton = (props) => {
             deadline: deadline,
             is_finished: isFinished
         }
-        let request = axios.put(`http://127.0.0.1:8000/api/tickets/${props.ticket.id}/`, newTicket, {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-        })
+        try{
+            let request = await axios.put(`http://127.0.0.1:8000/api/tickets/${props.ticket.id}/`, newTicket, {
+                headers: {
+                Authorization: "Bearer " + token,
+                },
+            })
+        }
+        catch (error) {
+            console.log(error.message)
+        }
         props.fetchTickets()
     }
+
     useEffect(() => {
         setName(props.ticket.name)
         setPriority(props.ticket.priority)
@@ -46,7 +52,6 @@ const EditButton = (props) => {
         setDeadline(props.ticket.deadline)
         setIsFinished(props.ticket.is_finished)
     }, [props.ticket.name, props.ticket.priority, props.ticket.description, props.ticket.status, props.ticket.deadline, props.ticket.is_finished])
-
 
     return ( 
         <div>

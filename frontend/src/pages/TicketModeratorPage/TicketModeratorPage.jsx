@@ -39,7 +39,7 @@ const TicketModeratorPage = (props) => {
 
     return ( 
         <div>
-            <h1>Dashboard for for {user.username}!</h1>
+            <h1>Admin Page for {user.username}!</h1>
               <Filter name={"All"} setTicketFilter={setTicketFilter}/>
               <Filter name={"My Tickets"} setTicketFilter={setTicketFilter}/>
               <Filter name={"My Tickets by Priority"} setTicketFilter={setTicketFilter}/>
