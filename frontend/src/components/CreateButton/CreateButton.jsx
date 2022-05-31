@@ -38,20 +38,26 @@ const CreateButton = (props) => {
                 <Modal.Body>
                     <h2>Create New Ticket</h2>
                     <form onSubmit={handleSubmit} className='ml-2'>
-                        <label>Name: </label>
-                        <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
-                        <label>Description: </label>
-                        <textarea value={description} onChange={(event) => setDescription(event.target.value)}/>
+                        <div>
+                            <label>Name: </label>
+                            <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
+                        </div>
+                        <div>
+                            <label>Description: </label>
+                            <textarea value={description} onChange={(event) => setDescription(event.target.value)}/>
+                        </div>
                         <div>
                             <label>Priority: </label>
                             <span> 1 (least urgent)</span>
                             <input type="range" min={1} max={3} value={priority} onChange={(event) => setPriority(event.target.value)}/>
                             <span> 3 (most urgent)</span>
                         </div>
-                        <label>Due Date: </label>
-                        <input type="date" value={timeStamp} onChange={(event) => setTimeStamp(event.target.value)} />
+                        <div>
+                            <label>Due Date: </label>
+                            <input type="date" value={timeStamp} onChange={(event) => setTimeStamp(event.target.value)} />
+                        </div>
                         <button type='submit' onClick={handleClose}>Create</button>
-                        <button  onClick={handleClose}>Close</button>
+                        <button  onClick={handleClose}>Cancel</button>
                     </form>
                 </Modal.Body>
             </Modal>
