@@ -12,7 +12,6 @@ const HomePage = () => {
 
   const [user, token] = useAuth();
   const [update, setUpdate] = useState(1.4);
-  // const TicketContext = createContext();
   const [tickets, setTickets] = useState([]);
 
   const createTicket = async (newTicket) => {
@@ -60,13 +59,11 @@ const HomePage = () => {
   }
 
   return (
-    // <TicketContext.Provider value={tickets}>
-      <div className="container">
-        {determinePage()}
-        <SearchBar tickets={tickets} setTickets={setTickets} />
-        <CreateButton createTicket={createTicket} tickets={tickets} fetchTickets={fetchTickets}/>
-      </div>
-    // </TicketContext.Provider>
+    <div className="container">
+      {determinePage()}
+      <SearchBar tickets={tickets} setTickets={setTickets} />
+      <CreateButton createTicket={createTicket} tickets={tickets} fetchTickets={fetchTickets}/>
+    </div>
   );
 };
 

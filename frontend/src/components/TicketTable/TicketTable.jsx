@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import useAuth from "../../hooks/useAuth";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditButton from "../EditButton/EditButton";
+import "./TicketTable.css"
 
 const TicketTable = (props) => {
 
