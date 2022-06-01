@@ -7,6 +7,7 @@ const CustomerPage = (props) => {
 
   const [ticketFilter, setTicketFilter] = useState("All")
   const [tickets, setTickets] = useState([])
+  let options = ["All", "Active", "Completed"]
 
   useEffect(() => {
     const showFinishedList = (ticketFilter) => {
@@ -35,9 +36,7 @@ const CustomerPage = (props) => {
     <div className="container">
       <h1>Welcome to Ticket Tracker, {user.first_name}!</h1>
       <div className="filter-div">
-        <Filter name={"All"} setTicketFilter={setTicketFilter}/>
-        <Filter name={"Active"} setTicketFilter={setTicketFilter}/>
-        <Filter name={"Completed"} setTicketFilter={setTicketFilter}/>
+        <Filter options={options} setTicketFilter={setTicketFilter}/>
       </div>
       {tickets && <TicketTable tickets={tickets} fetchTickets={props.fetchTickets}/>}
     </div>

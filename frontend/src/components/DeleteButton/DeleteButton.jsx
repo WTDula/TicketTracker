@@ -22,7 +22,7 @@ const DeleteButton = (props) => {
 
     return ( 
         <div>
-            <button onClick={handleDelete}>Delete Ticket {props.ticket.id}</button>
+            <button onClick={handleDelete}>DELETE TICKET {props.ticket.id}</button>
         </div>
      );
 }

@@ -10,6 +10,7 @@ const EngineerPage = (props) => {
   const [user, token] = useAuth()
   const [ticketFilter, setTicketFilter] = useState("All")
   const [tickets, setTickets] = useState([])
+  let options = ["All", "My Tickets", "My Tickets by Priority"]
 
   useEffect(() => {
     const showFinishedList = (ticketFilter) => {
@@ -37,10 +38,7 @@ const EngineerPage = (props) => {
   return ( 
       <div>
           <h1>Dashboard for {user.first_name}!</h1>
-              <Filter name={"All"} setTicketFilter={setTicketFilter}/>
-              <Filter name={"My Tickets"} setTicketFilter={setTicketFilter}/>
-              <Filter name={"My Tickets by Priority"} setTicketFilter={setTicketFilter}/>
-
+          <Filter options={options} setTicketFilter={setTicketFilter}/>
           {tickets && <TicketTable tickets={tickets}/>}
           <Statistics tickets={props.tickets} />
       </div>

@@ -1,10 +1,18 @@
 import React from 'react';
 
 const Filter = (props) => {
+
+    const displayOptions = () => {
+        props.options.forEach(element => {
+            return <option value={`${element}`}>{element}</option>
+        });
+    }
+
+
     return ( 
-        <div>
-            <button onClick={() => props.setTicketFilter(props.name)}>{props.name}</button>
-        </div>
+        <select onChange={event => props.setTicketFilter(event.target.value)}>
+            {displayOptions()}
+        </select>
      );
 }
  

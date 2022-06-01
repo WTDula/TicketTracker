@@ -55,7 +55,7 @@ const EditButton = (props) => {
 
     return ( 
         <div>
-            <button onClick={handleShow}>Edit</button>
+            <button onClick={handleShow}>EDIT</button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Update Ticket</Modal.Title>
