@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
+import Button from '@mui/material/Button';
 
 
 const DeleteButton = (props) => {
@@ -22,7 +23,19 @@ const DeleteButton = (props) => {
 
     return ( 
         <div>
-            <button onClick={handleDelete}>DELETE TICKET {props.ticket.id}</button>
+            <Button
+                style={{
+                    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+                    border: 0,
+                    borderRadius: 3,
+                    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+                    color: 'white',
+                    marginBottom: '1px',
+                    padding: '0 30px'}}
+                onClick={handleDelete}
+            >
+                DELETE TICKET {props.ticket.id}
+            </Button>
         </div>
      );
 }
