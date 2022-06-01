@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Modal from "react-bootstrap/Modal";
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
 
 const EditButton = (props) => {
 
     const [user, token] = useAuth()
-    const [show, setShow] = useState(false);
+    const [open, setOpen] = useState(false);
     const [name, setName] = useState("")
     const [priority, setPriority] = useState(1)
     const [description, setDescription] = useState("")
@@ -15,10 +18,22 @@ const EditButton = (props) => {
     const [deadline, setDeadline] = useState(Date())
     const [isFinished, setIsFinished] = useState(false)
 
-    const handleClose = () => setShow(false);
-    const handleShow = (e) => {
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+      }
+
+    const handleClose = () => setOpen(false);
+    const handleOpen = (e) => {
         e.preventDefault()
-        setShow(true);
+        setOpen(true);
     }
 
     async function handleSubmit(event){
@@ -55,38 +70,45 @@ const EditButton = (props) => {
 
     return ( 
         <div>
-            <button onClick={handleShow}>EDIT</button>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header>
-                    <Modal.Title>Update Ticket</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder={props.ticket.name} onChange={event => setName(event.target.value)} />
-                        <div>
-                            <p>Priority</p>
-                            <span> 1 (least urgent)</span>
-                            <input type="range" min={1} max={3} onChange={event => setPriority(event.target.value)}/>
-                            <span> 3 (most urgent)</span>
-                        </div>
-                        <textarea placeholder='Update Explanation' onChange={event => setDescription(event.target.value)}/>
-                        <label>Status</label>
-                        <select onChange={event => setStatus(event.target.value)}>
-                            <option value="submitted">Submitted</option>
-                            <option value="in progress">In Progress</option>
-                            <option value="finished">Finished</option>
-                        </select>
-                        <label>Deadline</label>
-                        <input type="date" value={deadline} onChange={event => setDeadline(event.target.value)} />
-                        <div onChange={event => setIsFinished(event.target.value)}>
-                            <label>Is the Ticket Finished?</label>
-                            <input type="radio" value={true} />Yes
-                            <input type="radio" value={false} />No
-                        </div>
-                        <button type="submit" onClick={handleClose}>Save</button>
-                        <button onClick={handleClose}>Close</button>
-                    </form>
-                </Modal.Body>
+            <Button onClick={handleOpen}>EDIT</Button>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Update Ticket
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        <form onSubmit={handleSubmit}>
+                            <input type="text" placeholder={props.ticket.name} onChange={event => setName(event.target.value)} />
+                            <div>
+                                <p>Priority</p>
+                                <span> 1 (least urgent)</span>
+                                <input type="range" min={1} max={3} onChange={event => setPriority(event.target.value)}/>
+                                <span> 3 (most urgent)</span>
+                            </div>
+                            <textarea placeholder='Update Explanation' onChange={event => setDescription(event.target.value)}/>
+                            <label>Status</label>
+                            <select onChange={event => setStatus(event.target.value)}>
+                                <option value="submitted">Submitted</option>
+                                <option value="in progress">In Progress</option>
+                                <option value="finished">Finished</option>
+                            </select>
+                            <label>Deadline</label>
+                            <input type="date" value={deadline} onChange={event => setDeadline(event.target.value)} />
+                            <div onChange={event => setIsFinished(event.target.value)}>
+                                <label>Is the Ticket Finished?</label>
+                                <input type="radio" value={true} />Yes
+                                <input type="radio" value={false} />No
+                            </div>
+                            <button type="submit" onClick={handleClose}>Save</button>
+                            <button onClick={handleClose}>Close</button>
+                        </form>
+                    </Typography>
+                </Box>
             </Modal>
         </div>
      );
