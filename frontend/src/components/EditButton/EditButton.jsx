@@ -23,8 +23,8 @@ const EditButton = (props) => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
+        width: 500,
+        bgcolor: '#303030',
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
@@ -95,22 +95,34 @@ const EditButton = (props) => {
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         <form onSubmit={handleSubmit}>
-                            <input type="text" placeholder={props.ticket.name} onChange={event => setName(event.target.value)} />
                             <div>
-                                <p>Priority</p>
+                                <label>Name: </label>
+                                <input type="text" placeholder={props.ticket.name} onChange={event => setName(event.target.value)} />
+                            </div>
+                            <div>
+                                <label>Priority: </label>
+                            </div>
+                            <div>
                                 <span> 1 (least urgent)</span>
                                 <input type="range" min={1} max={3} onChange={event => setPriority(event.target.value)}/>
                                 <span> 3 (most urgent)</span>
                             </div>
-                            <textarea placeholder='Update Explanation' onChange={event => setDescription(event.target.value)}/>
-                            <label>Status</label>
-                            <select onChange={event => setStatus(event.target.value)}>
-                                <option value="submitted">Submitted</option>
-                                <option value="in progress">In Progress</option>
-                                <option value="finished">Finished</option>
-                            </select>
-                            <label>Deadline</label>
-                            <input type="date" value={deadline} onChange={event => setDeadline(event.target.value)} />
+                            <div>
+                                <label>Update Description: </label>
+                                <textarea placeholder='Update Explanation' onChange={event => setDescription(event.target.value)}/>
+                            </div>
+                            <div>
+                                <label>Status</label>
+                                <select onChange={event => setStatus(event.target.value)}>
+                                    <option value="submitted">Submitted</option>
+                                    <option value="in progress">In Progress</option>
+                                    <option value="finished">Finished</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Deadline</label>
+                                <input type="date" value={deadline} onChange={event => setDeadline(event.target.value)} />
+                            </div>
                             <div onChange={event => setIsFinished(event.target.value)}>
                                 <label>Is the Ticket Finished?</label>
                                 <input type="radio" value={true} />Yes

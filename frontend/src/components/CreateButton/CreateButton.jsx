@@ -19,8 +19,8 @@ const CreateButton = (props) => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
+        width: 500,
+        bgcolor: '#303030',
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
@@ -82,6 +82,8 @@ const CreateButton = (props) => {
                             </div>
                             <div>
                                 <label>Priority: </label>
+                            </div>
+                            <div>
                                 <span> 1 (least urgent)</span>
                                 <input type="range" min={1} max={3} value={priority} onChange={(event) => setPriority(event.target.value)}/>
                                 <span> 3 (most urgent)</span>
