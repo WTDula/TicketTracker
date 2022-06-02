@@ -3,6 +3,7 @@ import TicketTable from '../../components/TicketTable/TicketTable';
 import useAuth from '../../hooks/useAuth';
 import EngineerFilter from '../../components/EngineerFilter/EngineerFilter';
 import Statistics from '../../components/Statistics/Statistics';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 
 const EngineerPage = (props) => {
@@ -37,7 +38,10 @@ const EngineerPage = (props) => {
   return ( 
       <div>
           <h1>Dashboard for {user.first_name}!</h1>
-          <EngineerFilter setTicketFilter={setTicketFilter}/>
+          <div className='filter-search'>
+            <EngineerFilter setTicketFilter={setTicketFilter}/>
+            <SearchBar tickets={tickets} setTickets={setTickets} fetchTickets={props.fetchTickets}/>
+          </div>
           {tickets && <TicketTable tickets={tickets}/>}
           <Statistics tickets={props.tickets} />
       </div>

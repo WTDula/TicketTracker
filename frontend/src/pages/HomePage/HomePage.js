@@ -61,7 +61,6 @@ const HomePage = () => {
   return (
     <div className="container">
       {determinePage()}
-      <SearchBar tickets={tickets} setTickets={setTickets} fetchTickets={fetchTickets}/>
       <CreateButton createTicket={createTicket} tickets={tickets} fetchTickets={fetchTickets}/>
     </div>
   );

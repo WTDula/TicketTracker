@@ -4,6 +4,7 @@ import TicketTable from '../../components/TicketTable/TicketTable';
 import AdminTable from '../../components/AdminTable/AdminTable';
 import EngineerFilter from '../../components/EngineerFilter/EngineerFilter';
 import Statistics from '../../components/Statistics/Statistics';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 
 const TicketModeratorPage = (props) => {
@@ -40,7 +41,10 @@ const TicketModeratorPage = (props) => {
     return ( 
         <div>
             <h1>Admin Page for {user.first_name}!</h1>
+            <div className='filter-search'>
               <EngineerFilter setTicketFilter={setTicketFilter}/>
+              <SearchBar tickets={tickets} setTickets={setTickets} fetchTickets={props.fetchTickets}/>
+            </div>
             {tickets && <TicketTable tickets={tickets} fetchTickets={props.fetchTickets}/>}
             <Statistics tickets={props.tickets} />
             <AdminTable tickets={tickets} fetchTickets={props.fetchTickets}/>

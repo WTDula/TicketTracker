@@ -3,6 +3,8 @@ import CustomerFilter from "../../components/CustomerFilter/CustomerFilter";
 import TicketCard from "../../components/TicketCard/TicketCard";
 import TicketTable from "../../components/TicketTable/TicketTable";
 import useAuth from "../../hooks/useAuth";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import "./CustomerPage.css"
 
 const CustomerPage = (props) => {
 
@@ -35,8 +37,9 @@ const CustomerPage = (props) => {
   return (
     <div className="container">
       <h1>Welcome to Ticket Tracker, {user.first_name}!</h1>
-      <div className="filter-div">
+      <div className="filter-search">
         <CustomerFilter setTicketFilter={setTicketFilter}/>
+        <SearchBar tickets={tickets} setTickets={setTickets} fetchTickets={props.fetchTickets}/> 
       </div>
       {tickets && <TicketCard tickets={tickets} />}
       {/* {tickets && <TicketTable tickets={tickets} fetchTickets={props.fetchTickets}/>} */}

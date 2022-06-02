@@ -29,7 +29,7 @@ const SearchBar = (props) => {
 
     return ( 
         <form onSubmit={handleSubmit}>
-            <h2>Search Ticket Database</h2>
+            <h3>Search Ticket Database</h3>
             <input type="text" placeholder='Search' value={searchField} onChange={event => setSearchField(event.target.value)} />
             <Button 
                 type='submit'
