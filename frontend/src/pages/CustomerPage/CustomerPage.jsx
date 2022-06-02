@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Filter from "../../components/Filter/Filter";
+import TicketCard from "../../components/TicketCard/TicketCard";
 import TicketTable from "../../components/TicketTable/TicketTable";
 import useAuth from "../../hooks/useAuth";
 
@@ -38,7 +39,8 @@ const CustomerPage = (props) => {
       <div className="filter-div">
         <Filter options={options} setTicketFilter={setTicketFilter}/>
       </div>
-      {tickets && <TicketTable tickets={tickets} fetchTickets={props.fetchTickets}/>}
+      {tickets && <TicketCard tickets={tickets} />}
+      {/* {tickets && <TicketTable tickets={tickets} fetchTickets={props.fetchTickets}/>} */}
     </div>
   );
 };
