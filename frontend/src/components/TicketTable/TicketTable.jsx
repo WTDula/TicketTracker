@@ -7,13 +7,7 @@ import "./TicketTable.css"
 const TicketTable = (props) => {
 
     const [user, token] = useAuth()
-    const [update, setUpdate] = useState(1)
     const [tickets, setTickets] = useState([])
-
-    const reloadPage = () => {
-        setUpdate(Math.random * 10)
-    }
-    
 
     useEffect(() => {
         setTickets(props.tickets)
