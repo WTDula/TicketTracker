@@ -42,7 +42,7 @@ const EngineerPage = (props) => {
             <EngineerFilter setTicketFilter={setTicketFilter}/>
             <SearchBar tickets={tickets} setTickets={setTickets} fetchTickets={props.fetchTickets}/>
           </div>
-          {tickets && <TicketTable tickets={tickets}/>}
+          {tickets && <TicketTable tickets={tickets} fetchTickets={props.fetchTickets}/>}
           <Statistics tickets={props.tickets} />
       </div>
     );
