@@ -57,6 +57,7 @@ const EditButton = (props) => {
             console.log(error.message)
         }
         props.fetchTickets()
+        handleClose()
     }
 
     useEffect(() => {
@@ -128,7 +129,7 @@ const EditButton = (props) => {
                                 <input type="radio" value={true} />Yes
                                 <input type="radio" value={false} />No
                             </div>
-                            <button type="submit" onClick={handleClose}>Save</button>
+                            <button type="submit" onClick={handleSubmit}>Save</button>
                             <button onClick={handleClose}>Close</button>
                         </form>
                     </Typography>
