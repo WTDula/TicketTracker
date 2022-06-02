@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TicketTable from '../../components/TicketTable/TicketTable';
 import useAuth from '../../hooks/useAuth';
-import Filter from '../../components/Filter/Filter';
+import EngineerFilter from '../../components/EngineerFilter/EngineerFilter';
 import Statistics from '../../components/Statistics/Statistics';
 
 
@@ -10,7 +10,6 @@ const EngineerPage = (props) => {
   const [user, token] = useAuth()
   const [ticketFilter, setTicketFilter] = useState("All")
   const [tickets, setTickets] = useState([])
-  let options = ["All", "My Tickets", "My Tickets by Priority"]
 
   useEffect(() => {
     const showFinishedList = (ticketFilter) => {
@@ -38,7 +37,7 @@ const EngineerPage = (props) => {
   return ( 
       <div>
           <h1>Dashboard for {user.first_name}!</h1>
-          <Filter options={options} setTicketFilter={setTicketFilter}/>
+          <EngineerFilter setTicketFilter={setTicketFilter}/>
           {tickets && <TicketTable tickets={tickets}/>}
           <Statistics tickets={props.tickets} />
       </div>

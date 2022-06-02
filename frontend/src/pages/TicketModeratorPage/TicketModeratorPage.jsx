@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import TicketTable from '../../components/TicketTable/TicketTable';
 import AdminTable from '../../components/AdminTable/AdminTable';
-import Filter from '../../components/Filter/Filter';
+import EngineerFilter from '../../components/EngineerFilter/EngineerFilter';
 import Statistics from '../../components/Statistics/Statistics';
 
 
@@ -11,7 +11,6 @@ const TicketModeratorPage = (props) => {
     const [user, token] = useAuth()
     const [ticketFilter, setTicketFilter] = useState("All")
     const [tickets, setTickets] = useState([])
-    let options = ["All", "My Tickets", "My Tickets by Priority"]
 
     useEffect(() => {
         const showFinishedList = (ticketFilter) => {
@@ -41,7 +40,7 @@ const TicketModeratorPage = (props) => {
     return ( 
         <div>
             <h1>Admin Page for {user.first_name}!</h1>
-              <Filter options={options} setTicketFilter={setTicketFilter}/>
+              <EngineerFilter setTicketFilter={setTicketFilter}/>
             {tickets && <TicketTable tickets={tickets} fetchTickets={props.fetchTickets}/>}
             <Statistics tickets={props.tickets} />
             <AdminTable tickets={tickets} fetchTickets={props.fetchTickets}/>
