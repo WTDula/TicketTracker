@@ -25,6 +25,7 @@ const TicketTable = (props) => {
                 <tr>
                     <th>Name</th>
                     <th>Status</th>
+                    <th>Priority</th>
                     <th>Description</th>
                     <th>Assigned To</th>
                     <th>Posted By</th>
@@ -38,6 +39,7 @@ const TicketTable = (props) => {
                         <tr key={index}>
                             <td>{ticket.name}</td>
                             <td>{ticket.status}</td>
+                            <td>{ticket.priority === 3 ? "High" : ticket.priority === 2 ? "Medium" : "Low"}</td>
                             <td className="desc">{ticket.description}</td>
                             <td>{ticket.assigned_to.last_name}, {ticket.assigned_to.first_name}</td>
                             <td>{ticket.posted_by.last_name}, {ticket.posted_by.first_name}</td>
