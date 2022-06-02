@@ -36,6 +36,7 @@ const CreateButton = (props) => {
             deadline: timeStamp,
         }
         props.createTicket(newTicket)
+        handleClose()
     }
 
 
@@ -92,7 +93,7 @@ const CreateButton = (props) => {
                                 <label>Due Date: </label>
                                 <input type="date" value={timeStamp} onChange={(event) => setTimeStamp(event.target.value)} />
                             </div>
-                            <button type='submit' onClick={handleClose}>Create</button>
+                            <button type='submit' onClick={handleSubmit}>Create</button>
                             <button  onClick={handleClose}>Cancel</button>
                         </form>
                     </Typography>
