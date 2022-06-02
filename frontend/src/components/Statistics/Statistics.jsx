@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
+import "./Statistics.css"
 
 const Statistics = (props) => {
 
@@ -46,10 +47,10 @@ const Statistics = (props) => {
     }, [props.tickets])
 
     return ( 
-        <div>
-            <p>Percentage of my tickets past deadline: </p>
+        <div className='stat-container'>
+            <p>Percentage of my tickets past deadline:    </p>
             {pastDeadlinePercent()}%
-            <p>Percentage of my tickets completed on time: </p>
+            <p>Percentage of my tickets completed on time:    </p>
             {completedOnTimePercent()}%
         </div>
      );

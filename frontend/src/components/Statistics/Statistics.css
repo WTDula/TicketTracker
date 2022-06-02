@@ -1,0 +1,14 @@
+.stat-container{
+    display: grid;
+    justify-content: center;
+    width: 50%;
+    margin: 10px auto;
+    color: #FE6B8B;
+}
+
+.stat-container p{
+    border-style: double;
+    width: 75%;
+    margin: 5px auto;
+    color: steelblue;
+}
