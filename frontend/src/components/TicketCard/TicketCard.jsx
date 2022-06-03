@@ -37,6 +37,7 @@ const TicketCard = (props) => {
     }, [props.tickets])
 
     return ( 
+        tickets.length > 0 ? 
         <div>
             {tickets.map((ticket, index) => {
                 return (
@@ -87,8 +88,8 @@ const TicketCard = (props) => {
                         </Collapse>
                     </Card>
                 )
-            })}
-        </div>
+            })} 
+        </div> : <span>No Tickets to Display</span> 
      );
 }
  

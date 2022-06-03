@@ -28,6 +28,7 @@ const AdminTable = (props) => {
     return ( 
         <div>
             <h2>Assigned Tickets</h2>
+            {assignedTickets.length <= 0 ? <span>No Tickets to Display</span> : 
             <table>
                 <thead>
                     <tr>
@@ -55,8 +56,9 @@ const AdminTable = (props) => {
                         )
                     })}
                 </tbody>
-            </table>  
+            </table> }
             <h2>Unassigned Tickets</h2>
+            {unassignedTickets.length <= 0 ? <span>No Tickets to Display</span> : 
             <table>
                 <thead>
                     <tr>
@@ -84,7 +86,7 @@ const AdminTable = (props) => {
                         )
                     })}
                 </tbody>
-            </table> 
+            </table> }
         </div>
     )
 }

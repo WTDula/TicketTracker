@@ -14,6 +14,7 @@ const TicketTable = (props) => {
     }, [props.tickets])
 
     return (
+        tickets.length > 0 ?
         <table>
             <thead>
                 <tr>
@@ -45,7 +46,7 @@ const TicketTable = (props) => {
                     )
                 })}
             </tbody>
-        </table>  
+        </table> : <span>No Tickets to Display</span>
      );
 }
  
